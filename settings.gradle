@@ -6,11 +6,10 @@ pluginManagement {
     }
 }
 dependencyResolutionManagement {
-    repositoriesMode.set(RepositoriesMode.PREFER_SETTINGS)  // ✅ เปลี่ยนจาก FAIL_ON_PROJECT_REPOS
+    repositoriesMode.set(RepositoriesMode.PREFER_SETTINGS)
     repositories {
         google()
         mavenCentral()
-        maven { url 'https://jitpack.io' }  // ✅ เพิ่ม JitPack
     }
 }
 rootProject.name = "V2ray"

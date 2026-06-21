@@ -25,8 +25,7 @@ android {
 
     buildFeatures {
         viewBinding true
-        buildConfig true   // ✅ สำหรับ BuildConfig
-        // dataBinding true  // ปิดไว้ก่อน ถ้าต้องการค่อยเปิด
+        buildConfig true
     }
 
     compileOptions {
@@ -67,11 +66,9 @@ dependencies {
     // RxJava 2
     implementation 'io.reactivex.rxjava2:rxjava:2.2.21'
     implementation 'io.reactivex.rxjava2:rxandroid:2.1.1'
-    
-    // ❌ ลบ rxpermissions ออกแล้ว ใช้ AndroidX ActivityResult API แทน
 
-    // QR Code Scanner ✅ เปลี่ยนเป็น artifact ที่ JitPack รองรับ
-    implementation 'com.github.dm77:barcodescanner:1.9.13'   // ✅ เปลี่ยนจาก me.dm7
+    // QR Code Scanner ✅ ใช้เวอร์ชันที่มีใน Maven Central
+    implementation 'me.dm7.barcodescanner:zxing:1.9.8'
     implementation 'com.journeyapps:zxing-android-embedded:4.3.0'
     implementation 'com.google.zxing:core:3.5.3'
 
@@ -82,4 +79,10 @@ dependencies {
     implementation 'androidx.annotation:annotation:1.8.0'
 }
 
-
+repositories {
+    google()
+    mavenCentral()
+    flatDir {
+        dirs 'libs'
+    }
+}
