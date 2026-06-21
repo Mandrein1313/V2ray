@@ -25,7 +25,7 @@ android {
 
     buildFeatures {
         viewBinding true
-        buildConfig true   // ✅ เพิ่มสำหรับ BuildConfig
+        buildConfig true   // ✅ สำหรับ BuildConfig
         // dataBinding true  // ปิดไว้ก่อน ถ้าต้องการค่อยเปิด
     }
 
@@ -70,8 +70,8 @@ dependencies {
     
     // ❌ ลบ rxpermissions ออกแล้ว ใช้ AndroidX ActivityResult API แทน
 
-    // QR Code Scanner ✅ เพิ่มไลบรารีที่ขาดหายไป
-    implementation 'me.dm7.barcodescanner:zxing:1.9.13'   // ✅ เพิ่มบรรทัดนี้
+    // QR Code Scanner ✅ เปลี่ยนเป็น artifact ที่ JitPack รองรับ
+    implementation 'com.github.dm77:barcodescanner:1.9.13'   // ✅ เปลี่ยนจาก me.dm7
     implementation 'com.journeyapps:zxing-android-embedded:4.3.0'
     implementation 'com.google.zxing:core:3.5.3'
 
@@ -85,7 +85,7 @@ dependencies {
 repositories {
     google()
     mavenCentral()
-    // ไม่ต้องมี JitPack แล้ว
+    maven { url 'https://jitpack.io' }  // ✅ เพิ่ม JitPack เพื่อหา com.github.dm77
     flatDir {
         dirs 'libs'
     }
