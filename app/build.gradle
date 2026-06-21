@@ -42,7 +42,8 @@ android {
 }
 
 dependencies {
-    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    // รวม .jar และ .aar ไว้ในนี้
+    implementation fileTree(include: ['*.jar', '*.aar'], dir: 'libs')
 
     // Kotlin
     implementation 'org.jetbrains.kotlin:kotlin-stdlib:1.9.24'
@@ -67,14 +68,14 @@ dependencies {
 
     // External Libraries
     implementation 'com.journeyapps:zxing-android-embedded:4.3.0'
-    implementation 'com.github.tbruyelle:rxpermissions:0.12'
+    // เปลี่ยนมาใช้รูปแบบนี้เพื่อป้องกันการหาไม่เจอในบางกรณี
+    implementation 'com.github.tbruyelle:rxpermissions:0.12' 
     implementation 'io.reactivex.rxjava3:rxjava:3.1.8'
     implementation 'io.reactivex.rxjava3:rxandroid:3.0.2'
 
     // JSON
     implementation 'com.google.code.gson:gson:2.11.0'
 
-    // libv2ray
-    implementation(name: 'libv2ray', ext: 'aar')
+    // libv2ray - เปลี่ยนมาใช้วิธีนี้เพื่อให้ fileTree จัดการให้อัตโนมัติ
+    // implementation(name: 'libv2ray', ext: 'aar') <-- ตัดออกเพื่อป้องกันปัญหาหาไม่เจอ
 }
-
