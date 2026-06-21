@@ -40,25 +40,21 @@ android {
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
 
-    // Kotlin
     implementation 'org.jetbrains.kotlin:kotlin-stdlib:1.9.24'
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.8.0'
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.8.0'
 
-    // AndroidX (แทน support library เก่า)
     implementation 'androidx.appcompat:appcompat:1.7.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'  // ใช้ 2.1.4 เพื่อความเข้ากันได้
     implementation 'androidx.recyclerview:recyclerview:1.3.2'
-    implementation 'androidx.constraintlayout:constraintlayout:2.2.0'
     implementation 'androidx.multidex:multidex:2.0.1'
 
-    // Other
-    implementation 'com.google.code.gson:gson:2.11.0'
-    implementation 'io.reactivex:rxjava:1.3.4'
-    implementation 'io.reactivex:rxandroid:1.2.1'
+    // Material Design
+    implementation 'com.google.android.material:material:1.12.0'
 
+    implementation 'com.google.code.gson:gson:2.11.0'
     implementation(name: 'libv2ray', ext: 'aar')
 }
-
 repositories {
     flatDir {
         dirs 'libs'
