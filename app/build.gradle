@@ -16,11 +16,9 @@ android {
         multiDexEnabled true
     }
 
-    buildTypes {
-        release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
-        }
+    buildFeatures {
+        viewBinding true
+        dataBinding true
     }
 
     compileOptions {
@@ -31,51 +29,34 @@ android {
     kotlinOptions {
         jvmTarget = "17"
     }
-
-    buildFeatures {
-        viewBinding true
-        dataBinding true // เพิ่มบรรทัดนี้ เพื่อแก้ไข Error dataBindingMergeDependencyArtifactsDebug
-    }
-
-    sourceSets {
-        main.java.srcDirs += 'src/main/kotlin'
-    }
 }
 
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation files('libs/libv2ray.aar')
 
-    // Kotlin
-    implementation 'org.jetbrains.kotlin:kotlin-stdlib:1.9.24'
-    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.8.0'
-    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.8.0'
-
     // AndroidX & UI
     implementation 'androidx.appcompat:appcompat:1.7.0'
+    implementation 'androidx.core:core-ktx:1.13.1'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
     implementation 'androidx.recyclerview:recyclerview:1.3.2'
-    implementation 'androidx.cardview:cardview:1.0.0'
     implementation 'androidx.multidex:multidex:2.0.1'
-    implementation 'androidx.activity:activity-ktx:1.9.0'
-    implementation 'androidx.fragment:fragment-ktx:1.8.0'
     implementation 'androidx.preference:preference-ktx:1.2.1'
     implementation 'com.google.android.material:material:1.12.0'
-   
+    
     // Lifecycle
     implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.8.0'
     implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.8.0'
-    implementation 'androidx.lifecycle:lifecycle-common-java8:2.8.0'
 
-    // External Libraries
-    implementation 'com.journeyapps:zxing-android-embedded:4.3.0'
-    
-    // เปลี่ยนมาใช้เวอร์ชัน 0.10.2 ชั่วคราวเพื่อความเสถียรบน JitPack
-    implementation 'com.github.tbruyelle:rxpermissions:0.10.2' 
-    
+    // RxJava & RxPermissions
     implementation 'io.reactivex.rxjava3:rxjava:3.1.8'
     implementation 'io.reactivex.rxjava3:rxandroid:3.0.2'
+    implementation 'com.github.tbruyelle:rxpermissions:0.10.2'
 
-    // JSON
+    // JSON & Utilities
     implementation 'com.google.code.gson:gson:2.11.0'
+    implementation 'com.journeyapps:zxing-android-embedded:4.3.0'
+    
+    // Notification & Compat
+    implementation 'androidx.annotation:annotation:1.8.0'
 }
